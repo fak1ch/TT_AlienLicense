@@ -7,5 +7,6 @@ namespace App.Scripts.Scenes.Configs
     public class LevelSceneConfig : ScriptableObject
     {
         public BlockGridConfig BlockGridConfig;
+        public BlockMovementConfig BlockMovementConfig;
     }
 }

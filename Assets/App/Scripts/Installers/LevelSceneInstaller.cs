@@ -29,11 +29,11 @@ namespace App.Scripts.Installers
             block4.Initialize(_inputSystem, _mainCamera);
             block5.Initialize(_inputSystem, _mainCamera);
 
-            _blockGrid.ReplaceBlock(4, 4, block1);
-            _blockGrid.ReplaceBlock(1, 7, block2);
-            _blockGrid.ReplaceBlock(4, 8, block3);
-            _blockGrid.ReplaceBlock(2, 4, block4);
-            _blockGrid.ReplaceBlock(1, 1, block5);
+            _blockGrid.SetBlock(4, 4, block1);
+            _blockGrid.SetBlock(1, 7, block2);
+            _blockGrid.SetBlock(4, 8, block3);
+            _blockGrid.SetBlock(2, 4, block4);
+            _blockGrid.SetBlock(1, 1, block5);
         }
     }
 }

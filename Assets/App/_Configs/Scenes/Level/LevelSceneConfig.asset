@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: LevelSceneConfig
   m_EditorClassIdentifier: 
   BlockGridConfig:
-    EmptyGridBlockPoolData:
-      size: 36
+    BlockGridCellPoolData:
+      size: 100
       container: {fileID: 0}
-      prefab: {fileID: 2261421692368397233, guid: 2dd3e97d4895cce49ac37390ddd58db4, type: 3}
+      prefab: {fileID: 2405261066157842387, guid: 2dd3e97d4895cce49ac37390ddd58db4, type: 3}
     CellSize: 1
     MirrorX: 0
     MirrorZ: 1
+  BlockMovementConfig:
+    MoveSpeed: 1000
+    MoveToPositionDuration: 0.5

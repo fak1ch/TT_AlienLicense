@@ -200,6 +200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 519420031}
   _inputSystem: {fileID: 197351932}
+  _blockGrid: {fileID: 197351934}
 --- !u!114 &197351934
 MonoBehaviour:
   m_ObjectHideFlags: 0
