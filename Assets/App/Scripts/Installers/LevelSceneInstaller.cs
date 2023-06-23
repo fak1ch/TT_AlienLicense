@@ -9,6 +9,7 @@ namespace App.Scripts.Installers
         [SerializeField] private BlockGrid _blockGrid;
         [SerializeField] private Block _movableBlockPrefab;
         [SerializeField] private InputSystem _inputSystem;
+        [SerializeField] private Camera _mainCamera;
         
         private void Awake()
         {
@@ -22,11 +23,11 @@ namespace App.Scripts.Installers
             Block block4 = Instantiate(_movableBlockPrefab);
             Block block5 = Instantiate(_movableBlockPrefab);
             
-            block1.Initialize(_inputSystem);
-            block2.Initialize(_inputSystem);
-            block3.Initialize(_inputSystem);
-            block4.Initialize(_inputSystem);
-            block5.Initialize(_inputSystem);
+            block1.Initialize(_inputSystem, _mainCamera);
+            block2.Initialize(_inputSystem, _mainCamera);
+            block3.Initialize(_inputSystem, _mainCamera);
+            block4.Initialize(_inputSystem, _mainCamera);
+            block5.Initialize(_inputSystem, _mainCamera);
 
             _blockGrid.ReplaceBlock(4, 4, block1);
             _blockGrid.ReplaceBlock(1, 7, block2);

@@ -173,6 +173,7 @@ MonoBehaviour:
   _blockGrid: {fileID: 197351934}
   _movableBlockPrefab: {fileID: 2261421692368397233, guid: dc54e04795f08b54dbcd5ed846e0be91, type: 3}
   _inputSystem: {fileID: 197351932}
+  _mainCamera: {fileID: 519420031}
 --- !u!114 &197351932
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,11 +5,10 @@ namespace App.Scripts.Scenes.Level
     public class Block : MonoBehaviour
     {
         [SerializeField] private BlockMovement _blockMovement;
-        private InputSystem _inputSystem;
-        
-        public void Initialize(InputSystem inputSystem)
+
+        public void Initialize(InputSystem inputSystem, Camera mainCamera)
         {
-            _blockMovement.Initialize(inputSystem);
+            _blockMovement.Initialize(inputSystem, mainCamera);
         }
     }
 }
