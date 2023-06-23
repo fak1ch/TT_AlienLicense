@@ -17,9 +17,10 @@ namespace App.Scripts.Scenes.Level
         {
             _inputSystem = inputSystem;
             _mainCamera = mainCamera;
+            SetCanMove(false);
         }
 
-        private void Update()
+        public void Move()
         {
             Vector2 mousePosition = _inputSystem.MousePosition;
             Vector3 vector3MousePosition = new Vector3(mousePosition.x, mousePosition.y, _mainCamera.transform.position.y);
@@ -31,20 +32,16 @@ namespace App.Scripts.Scenes.Level
             Vector3 velocity = direction * Time.deltaTime * _config.MoveSpeed;
 
             velocity.x = _blockMovementType == BlockMovementTypes.Horizontal ? direction.x : 0;
-            velocity.x = _blockMovementType == BlockMovementTypes.Vertical ? direction.z : 0;
-
-            velocity = _canMove ? velocity : Vector3.zero;
+            velocity.z = _blockMovementType == BlockMovementTypes.Vertical ? direction.z : 0;
+            
             _rigidbody.velocity = velocity;
-        }
-
-        private float ApplySpeed(float input)
-        {
-            return input * Time.deltaTime * _config.MoveSpeed;
         }
 
         public void SetCanMove(bool value)
         {
             _canMove = value;
+            _rigidbody.constraints = value ? RigidbodyConstraints.FreezeRotation : RigidbodyConstraints.FreezeAll;
+            _rigidbody.velocity = Vector3.zero;
         }
     }
 }

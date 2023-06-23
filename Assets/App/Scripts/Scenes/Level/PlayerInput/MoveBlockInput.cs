@@ -34,7 +34,12 @@ namespace App.Scripts.Scenes.Level
                 _selectedBlockMovement.SetCanMove(true);
             }
         }
-        
+
+        private void Update()
+        {
+            _selectedBlockMovement!?.Move();
+        }
+
         private void MouseUpCallback()
         {
             if(_selectedBlockMovement == null) return;
