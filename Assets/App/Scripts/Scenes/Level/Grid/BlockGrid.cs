@@ -6,6 +6,9 @@ namespace App.Scripts.Scenes.Level
 {
     public class BlockGrid : MonoBehaviour
     {
+        public int RowsCount => _blockCellsGrid.GetLength(0) - 1;
+        public int ColumnsCount => _blockCellsGrid.GetLength(1) - 1;
+        
         [SerializeField] private LevelSceneConfig _levelSceneConfig;
         [SerializeField] private Transform _blockContainer;
         
@@ -27,6 +30,11 @@ namespace App.Scripts.Scenes.Level
             return _blockCellsGrid[row, column].Block;
         }
 
+        public BlockGridCell GetCell(int row, int column)
+        {
+            return _blockCellsGrid[row, column];
+        }
+        
         public void SetBlock(int row, int column, Block block)
         {
             _blockCellsGrid[row, column].SetBlock(block);

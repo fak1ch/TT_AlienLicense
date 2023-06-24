@@ -36,6 +36,12 @@ namespace App.Scripts.Scenes.Level
 
             velocity.x = _blockMovementType == BlockMovementTypes.Horizontal ? velocity.x : 0;
             velocity.z = _blockMovementType == BlockMovementTypes.Vertical ? velocity.z : 0;
+
+            DrawDebugRay(velocity.normalized);
+            if (CheckCollisionByRay(velocity.normalized))
+            {
+                velocity = Vector3.zero;
+            }
             
             _rigidbody.velocity = velocity;
         }
@@ -57,6 +63,30 @@ namespace App.Scripts.Scenes.Level
             _canMove = value;
             _rigidbody.constraints = value ? RigidbodyConstraints.FreezeRotation : RigidbodyConstraints.FreezeAll;
             _rigidbody.velocity = Vector3.zero;
+        }
+
+        private bool CheckCollisionByRay(Vector3 direction)
+        {
+            float rayDistance = transform.lossyScale.x/2;
+            Vector3 origin = transform.position;
+
+            return Physics.Raycast(origin, direction, out RaycastHit raycastHit,
+                rayDistance, Physics.AllLayers);
+        }
+
+        private void DrawDebugRay(Vector3 direction)
+        {
+            #if UNITY_EDITOR == false
+                return
+            #endif
+            
+            float rayDistance = transform.lossyScale.x/2;
+            Vector3 origin = transform.position;
+            
+            bool isCollision = CheckCollisionByRay(direction);
+            Color color = isCollision ? Color.red : Color.green;
+            
+            Debug.DrawRay(origin, transform.right * rayDistance, color);
         }
     }
 }

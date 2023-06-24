@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 197351932}
   - component: {fileID: 197351933}
   - component: {fileID: 197351934}
+  - component: {fileID: 197351935}
   m_Layer: 0
   m_Name: GameContext
   m_TagString: Untagged
@@ -173,7 +174,7 @@ MonoBehaviour:
   _blockGrid: {fileID: 197351934}
   _movableBlockPrefab: {fileID: 2261421692368397233, guid: dc54e04795f08b54dbcd5ed846e0be91, type: 3}
   _inputSystem: {fileID: 197351932}
-  _mainCamera: {fileID: 519420031}
+  _cameraContainer: {fileID: 197351935}
 --- !u!114 &197351932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,6 +216,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelSceneConfig: {fileID: 11400000, guid: 8b303a5dc6a4886498a9cf07e37fe9c9, type: 2}
   _blockContainer: {fileID: 692924532}
+--- !u!114 &197351935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197351922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad1ce9db54d491cb332390ecd8fff15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainCamera: {fileID: 519420031}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
