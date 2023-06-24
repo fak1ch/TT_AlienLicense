@@ -6,6 +6,7 @@ namespace App.Scripts.Scenes.Level
 {
     public class BlockGrid : MonoBehaviour
     {
+        public float CellSize => _config.CellSize;
         public int RowsCount => _blockCellsGrid.GetLength(0) - 1;
         public int ColumnsCount => _blockCellsGrid.GetLength(1) - 1;
         

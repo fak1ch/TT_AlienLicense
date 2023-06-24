@@ -10,12 +10,13 @@ namespace App.Scripts.Installers
         [SerializeField] private Block _movableBlockPrefab;
         [SerializeField] private InputSystem _inputSystem;
         [SerializeField] private CameraContainer _cameraContainer;
+        [SerializeField] private MapColliders _mapColliders;
         
         private void Awake()
         {
             PopUpSystem.Instance.enabled = true;
             
-            _blockGrid.Initialize(5,10);
+            _blockGrid.Initialize(9,9);
 
             Block block1 = Instantiate(_movableBlockPrefab);
             Block block2 = Instantiate(_movableBlockPrefab);
@@ -35,11 +36,15 @@ namespace App.Scripts.Installers
             _blockGrid.SetBlock(2, 4, block4);
             _blockGrid.SetBlock(1, 1, block5);
 
-            Vector3 firstCellPosition = _blockGrid.GetCell(0, 0).transform.position;
-            Vector3 lastCellPosition = _blockGrid.GetCell(_blockGrid.RowsCount, 
-                _blockGrid.ColumnsCount).transform.position;
+            BlockGridCell leftTopCell = _blockGrid.GetCell(0, 0);
+            BlockGridCell rightBottomCell = _blockGrid.GetCell(_blockGrid.RowsCount, _blockGrid.ColumnsCount);
             
-            _cameraContainer.SetCameraPosition((lastCellPosition + firstCellPosition)/2);
+            Vector3 firstCellPosition = leftTopCell.transform.position;
+            Vector3 lastCellPosition = rightBottomCell.transform.position;
+            Vector3 centerMapPosition = (lastCellPosition + firstCellPosition) / 2;
+            
+            _cameraContainer.SetCameraPosition(centerMapPosition);
+            _mapColliders.Initialize(_blockGrid, centerMapPosition);
         }
     }
 }
