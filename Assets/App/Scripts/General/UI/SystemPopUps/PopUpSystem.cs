@@ -13,7 +13,7 @@ namespace App.Scripts.General.PopUpSystemSpace
         [SerializeField] private Canvas _canvasParent;
         
         private List<PopUp> _activePopUps = new List<PopUp>();
-        private PopUpContainer _popUpContainer;
+        private PopUpContainerByType _popUpContainerByType;
 
         public int ActivePopUpsCount => _activePopUps.Count;
         public PopUp LastActivePopUp => _activePopUps.Last();
@@ -22,12 +22,12 @@ namespace App.Scripts.General.PopUpSystemSpace
         {
             base.Awake();
             
-            _popUpContainer = new PopUpContainer(_popUpList, _canvasParent.transform);
+            _popUpContainerByType = new PopUpContainerByType(_popUpList, _canvasParent.transform);
         }
 
         public T ShowPopUp<T>() where T : PopUp
         {
-            PopUp popUp = _popUpContainer.GetPopUpFromPoolByType(typeof(T));
+            PopUp popUp = _popUpContainerByType.GetPopUpFromPoolByType(typeof(T));
             popUp!.OnPopUpClose += DeletePopUpFromActivePopUps;
             _activePopUps.Add(popUp);
             popUp.gameObject.SetActive(true);
@@ -38,8 +38,8 @@ namespace App.Scripts.General.PopUpSystemSpace
 
         public T GetPopUpWithoutShow<T>()  where T : PopUp
         {
-            T popUp = (T)_popUpContainer.GetPopUpFromPoolByType(typeof(T));
-            _popUpContainer.ReturnPopUpToPool(popUp);
+            T popUp = (T)_popUpContainerByType.GetPopUpFromPoolByType(typeof(T));
+            _popUpContainerByType.ReturnPopUpToPool(popUp);
 
             return popUp;
         }
@@ -47,7 +47,7 @@ namespace App.Scripts.General.PopUpSystemSpace
         private void DeletePopUpFromActivePopUps(PopUp popUp)
         {
             popUp.OnPopUpClose -= DeletePopUpFromActivePopUps;
-            _popUpContainer.ReturnPopUpToPool(popUp);
+            _popUpContainerByType.ReturnPopUpToPool(popUp);
             _activePopUps.Remove(popUp);
         }
 

@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 197351934}
   - component: {fileID: 197351935}
   - component: {fileID: 197351936}
+  - component: {fileID: 197351937}
   m_Layer: 0
   m_Name: GameContext
   m_TagString: Untagged
@@ -173,8 +174,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _blockGrid: {fileID: 197351934}
-  _movableBlockPrefab: {fileID: 2261421692368397233, guid: dc54e04795f08b54dbcd5ed846e0be91, type: 3}
-  _inputSystem: {fileID: 197351932}
   _cameraContainer: {fileID: 197351935}
   _mapColliders: {fileID: 197351936}
 --- !u!114 &197351932
@@ -247,6 +246,19 @@ MonoBehaviour:
   _rightBoxCollider: {fileID: 1249131005}
   _topBoxCollider: {fileID: 1820141924}
   _bottomBoxCollider: {fileID: 957078181}
+--- !u!114 &197351937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197351922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ca9ec3aaa77418bb2c608b3cb0f4f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _blocksPoolParent: {fileID: 1820724163}
 --- !u!1 &330662602
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +386,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 626523920}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &568752399
 GameObject:
@@ -406,7 +418,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 626523920}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 65.2, y: 32.55, z: 0}
 --- !u!108 &568752401
 Light:
@@ -498,6 +510,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 692924532}
   - {fileID: 519420032}
   - {fileID: 568752400}
   m_Father: {fileID: 0}
@@ -526,14 +539,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 692924531}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 943849215}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  - {fileID: 1820724163}
+  m_Father: {fileID: 626523920}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &943849214
 GameObject:
@@ -705,3 +719,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0, y: 0, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1820724162
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1820724163}
+  m_Layer: 0
+  m_Name: BlocksParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1820724163
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820724162}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 692924532}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

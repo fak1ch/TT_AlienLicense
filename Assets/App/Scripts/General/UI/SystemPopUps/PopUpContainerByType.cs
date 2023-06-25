@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace App.Scripts.General.PopUpSystemSpace
 {
-    public class PopUpContainer : PoolContainer<PopUp>
+    public class PopUpContainerByType : PoolContainerByType<PopUp>
     {
-        public PopUpContainer(PoolObjectInformation<PopUp>[] poolObjectInfos, Transform poolContainer) : base(poolObjectInfos, poolContainer)
+        public PopUpContainerByType(PoolObjectInformation<PopUp>[] poolObjectInfos, Transform poolContainer) : base(poolObjectInfos, poolContainer)
         {
             
         }

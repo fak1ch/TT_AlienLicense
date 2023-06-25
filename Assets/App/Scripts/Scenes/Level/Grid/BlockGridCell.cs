@@ -10,11 +10,18 @@ namespace App.Scripts.Scenes.Level
         public void SetBlock(Block block)
         {
             Block = block;
+            block.OnDestroy += DestroyBlockCallback;
         }
 
         public void Clear()
         {
             Block = null;
+        }
+        
+        private void DestroyBlockCallback(Block block)
+        {
+            block.OnDestroy -= DestroyBlockCallback;
+            Clear();
         }
     }
 }

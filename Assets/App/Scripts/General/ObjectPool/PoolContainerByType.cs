@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace App.Scripts.General.ObjectPool
 {
-    public class PoolContainer<T> where T : Component
+    public class PoolContainerByType<T> where T : Component
     {
         private readonly PoolObjectInformation<T>[] _objectsInfo;
         private readonly Transform _poolContainer;
         protected readonly Dictionary<Type, ObjectPool<T>> _pools;
 
-        protected PoolContainer(PoolObjectInformation<T>[] poolObjectInfos, Transform poolContainer)
+        protected PoolContainerByType(PoolObjectInformation<T>[] poolObjectInfos, Transform poolContainer)
         {
             _poolContainer = poolContainer;
             _pools = new Dictionary<Type, ObjectPool<T>>();
