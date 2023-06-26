@@ -174,8 +174,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _blockGrid: {fileID: 197351934}
+  _blocksPoolContainer: {fileID: 197351937}
   _cameraContainer: {fileID: 197351935}
   _mapColliders: {fileID: 197351936}
+  _levelsConfig: {fileID: 11400000, guid: 8da04713b16bf61458eb07e63d552745, type: 2}
+  _levelEndTriggerPrefab: {fileID: -717197608909853816, guid: c47c3a2b027156b4f980a5e660408b33, type: 3}
+  _blocksConfig: {fileID: 11400000, guid: 81b060d431da77d4aa362d009e9a1d4b, type: 2}
+  _inputSystem: {fileID: 197351932}
 --- !u!114 &197351932
 MonoBehaviour:
   m_ObjectHideFlags: 0

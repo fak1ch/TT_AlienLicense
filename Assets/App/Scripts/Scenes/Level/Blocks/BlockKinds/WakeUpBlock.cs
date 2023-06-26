@@ -8,7 +8,9 @@ namespace App.Scripts.Scenes.Level.Blocks
     {
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.rigidbody.TryGetComponent(out PlayerBlock playerBlock))
+            if(IsInitialized == false) return;
+            
+            if (collision.gameObject.TryGetComponent(out PlayerBlock playerBlock))
             {
                 Debug.Log("game over");
             }

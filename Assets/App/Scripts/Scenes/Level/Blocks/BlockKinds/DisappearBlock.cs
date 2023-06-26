@@ -9,7 +9,9 @@ namespace App.Scripts.Scenes.Level.Blocks
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.rigidbody.TryGetComponent(out Block block))
+            if(IsInitialized == false) return;
+            
+            if (collision.gameObject.TryGetComponent(out Block block))
             {
                 Disappear(block);
             }

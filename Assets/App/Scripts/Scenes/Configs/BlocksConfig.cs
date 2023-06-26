@@ -13,7 +13,6 @@ namespace App.Scripts.Scenes.Level.Config
     [Serializable]
     public class BlockInformation
     {
-        public string Id;
         public Block Prefab;
         public int PoolSize;
     }

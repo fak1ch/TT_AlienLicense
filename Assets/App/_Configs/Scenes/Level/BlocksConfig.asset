@@ -13,24 +13,17 @@ MonoBehaviour:
   m_Name: BlocksConfig
   m_EditorClassIdentifier: 
   BlockInformation:
-  - Id: 2x1Horizontal
-    Prefab: {fileID: 1388103558040466131, guid: 59a8d32984e86d74d9eeec9072ef54f2, type: 3}
+  - Prefab: {fileID: 1388103558040466131, guid: 59a8d32984e86d74d9eeec9072ef54f2, type: 3}
     PoolSize: 5
-  - Id: 2x1Vertical
-    Prefab: {fileID: 3198935021075392813, guid: 3a1184e86a8ba724190f29f759c955a5, type: 3}
+  - Prefab: {fileID: 3198935021075392813, guid: 3a1184e86a8ba724190f29f759c955a5, type: 3}
     PoolSize: 5
-  - Id: 3x1Horizontal
-    Prefab: {fileID: 8891249870573099170, guid: af5358684f02fbc40a47c643d20389dd, type: 3}
+  - Prefab: {fileID: 8891249870573099170, guid: af5358684f02fbc40a47c643d20389dd, type: 3}
     PoolSize: 5
-  - Id: 3x1Vertical
-    Prefab: {fileID: 5593258313884741537, guid: bf948a97aa8e29e498c243d2573710bc, type: 3}
+  - Prefab: {fileID: 5593258313884741537, guid: bf948a97aa8e29e498c243d2573710bc, type: 3}
     PoolSize: 5
-  - Id: DisappearBlock
-    Prefab: {fileID: 3834373265237551917, guid: d5580f2c12e67ac4984b42db543efaed, type: 3}
+  - Prefab: {fileID: 3834373265237551917, guid: d5580f2c12e67ac4984b42db543efaed, type: 3}
     PoolSize: 1
-  - Id: PlayerBlock
-    Prefab: {fileID: 1496877978261180281, guid: d9d5d1b5011ca4347b9fe286bb8aa831, type: 3}
+  - Prefab: {fileID: 8309517888878969927, guid: d9d5d1b5011ca4347b9fe286bb8aa831, type: 3}
     PoolSize: 1
-  - Id: WakeUpBlock
-    Prefab: {fileID: 7646912988991282497, guid: f11e9b953655b48488223cb661b33b76, type: 3}
+  - Prefab: {fileID: 7646912988991282497, guid: f11e9b953655b48488223cb661b33b76, type: 3}
     PoolSize: 1

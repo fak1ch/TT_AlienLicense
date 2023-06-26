@@ -24,12 +24,13 @@ namespace App.Scripts.Scenes.Level
                     prefab = blockInformation.Prefab
                 };
                 
-                _blockPoolByIdMap.Add(blockInformation.Id, new ObjectPool<Block>(poolData));
+                _blockPoolByIdMap.Add(blockInformation.Prefab.Id, new ObjectPool<Block>(poolData));
             }
         }
 
         public Block GetBlockById(string id)
         {
+            Debug.Log(id);
             return _blockPoolByIdMap[id].GetElement();
         }
 

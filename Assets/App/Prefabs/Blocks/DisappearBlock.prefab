@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _blockMovement: {fileID: 3834373265237551919}
+  _id: DissapearBlock
   _disappearBlocksCount: 1
 --- !u!114 &3834373265237551919
 MonoBehaviour:

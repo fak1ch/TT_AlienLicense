@@ -12,8 +12,8 @@ namespace App.Scripts.Scenes.Level
         public void Initialize(BlockGrid blockGrid, Vector3 centerMapPosition)
         {
             float cellSize = blockGrid.CellSize;
-            int rows = blockGrid.RowsCount + 1;
-            int columns = blockGrid.ColumnsCount + 1;
+            int rows = blockGrid.Rows;
+            int columns = blockGrid.Columns;
 
             Vector3 colliderSize = new Vector3(columns * cellSize, cellSize, rows * cellSize);
 

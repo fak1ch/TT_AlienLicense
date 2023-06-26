@@ -7,8 +7,8 @@ namespace App.Scripts.Scenes.Level
     public class BlockGrid : MonoBehaviour
     {
         public float CellSize => _config.CellSize;
-        public int RowsCount => _blockCellsGrid.GetLength(0) - 1;
-        public int ColumnsCount => _blockCellsGrid.GetLength(1) - 1;
+        public int Rows => _blockCellsGrid.GetLength(0);
+        public int Columns => _blockCellsGrid.GetLength(1);
         
         [SerializeField] private LevelSceneConfig _levelSceneConfig;
         [SerializeField] private Transform _blockContainer;
@@ -40,6 +40,7 @@ namespace App.Scripts.Scenes.Level
         {
             _blockCellsGrid[row, column].SetBlock(block);
             block.transform.position = _blockCellsGrid[row, column].transform.position;
+            block.gameObject.SetActive(true);
         }
 
         public Block ReplaceBlock(int row, int column, Block newBlock)

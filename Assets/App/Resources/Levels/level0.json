@@ -1,0 +1,24 @@
+{
+  "BlockIds": [
+    [
+      null,
+      null,
+      null
+    ],
+    [
+      "PlayerBlock",
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null
+    ]
+  ],
+  "LevelEndTriggerPosition": {
+    "X": 2.82,
+    "Y": 0.5,
+    "Z": -1.0
+  }
+}

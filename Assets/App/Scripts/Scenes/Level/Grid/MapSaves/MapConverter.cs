@@ -1,12 +1,22 @@
-﻿using UnityEngine;
+﻿using System;
+using App.Scripts.General;
+using App.Scripts.Scenes.Level.Player;
+using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace App.Scripts.Scenes.Level
 {
     public class MapConverter
     {
-        public MapData ConvertBlocksGridToMapData(BlockGrid blockGrid)
+        public bool TryConvertBlocksGridToMapData(BlockGrid blockGrid, out MapData mapData)
         {
-            string[,] blockIds = new string[blockGrid.RowsCount, blockGrid.ColumnsCount];
+            mapData = new MapData();
+            LevelEndTrigger levelEndTrigger = Object.FindObjectOfType<LevelEndTrigger>();
+            PlayerBlock playerBlock = Object.FindObjectOfType<PlayerBlock>();
+
+            if (levelEndTrigger == null || playerBlock == null) return false;
+            
+            string[,] blockIds = new string[blockGrid.Rows, blockGrid.Columns];
 
             for (int i = 0; i < blockIds.GetLength(0); i++)
             {
@@ -19,13 +29,17 @@ namespace App.Scripts.Scenes.Level
                 }
             }
 
-            return new MapData()
+            mapData = new MapData()
             {
                 BlockIds = blockIds,
+                LevelEndTriggerPosition = levelEndTrigger.transform.position.ToCustomVector3(),
             };
+
+            return true;
         }
 
-        public void ConvertMapDataToBlocksGrid(MapData mapData, BlockGrid blockGrid, BlocksPoolContainer blocksPoolContainer)
+        public void ConvertMapDataToBlocksGrid(MapData mapData, BlockGrid blockGrid, BlocksPoolContainer blocksPoolContainer,
+            LevelEndTrigger levelEndTrigger, InputSystem inputSystem, Camera mainCamera)
         {
             string[,] blockIds = mapData.BlockIds;
             
@@ -33,10 +47,15 @@ namespace App.Scripts.Scenes.Level
             {
                 for (int k = 0; k < blockIds.GetLength(1); k++)
                 {
+                    if(blockIds[i,k] == null) continue;
+                    
                     Block block = blocksPoolContainer.GetBlockById(blockIds[i, k]);
+                    block.Initialize(inputSystem, mainCamera);
                     blockGrid.SetBlock(i,k, block);
                 }
             }
+
+            levelEndTrigger.transform.position = mapData.LevelEndTriggerPosition.ToUnityVector3();
         }
     }
 }
