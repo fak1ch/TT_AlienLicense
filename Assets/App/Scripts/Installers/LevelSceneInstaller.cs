@@ -25,7 +25,7 @@ namespace App.Scripts.Installers
             LevelEndTrigger levelEndTrigger = Instantiate(_levelEndTriggerPrefab);
             
             MapData mapData = _levelsConfig.LoadLevelByIndex(_levelsConfig.SelectedLevelIndex);
-            _blockGrid.Initialize(mapData.BlockIds.GetLength(0) + 1, mapData.BlockIds.GetLength(1) + 1);
+            _blockGrid.Initialize(mapData.BlockIds.GetLength(0), mapData.BlockIds.GetLength(1));
             
             MapConverter mapConverter = new MapConverter();
             mapConverter.ConvertMapDataToBlocksGrid(mapData, _blockGrid, _blocksPoolContainer, levelEndTrigger,
@@ -38,7 +38,7 @@ namespace App.Scripts.Installers
             Vector3 lastCellPosition = rightBottomCell.transform.position;
             Vector3 centerMapPosition = (lastCellPosition + firstCellPosition) / 2;
             
-            _cameraContainer.SetCameraPosition(centerMapPosition);
+            _cameraContainer.Initialize(centerMapPosition, _blockGrid);
             _mapColliders.Initialize(_blockGrid, centerMapPosition);
         }
     }

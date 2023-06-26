@@ -1,4 +1,5 @@
-﻿using App.Scripts.General.ObjectPool;
+﻿using System.Collections.Generic;
+using App.Scripts.General.ObjectPool;
 using App.Scripts.Scenes.Configs;
 using UnityEngine;
 
@@ -39,16 +40,9 @@ namespace App.Scripts.Scenes.Level
         public void SetBlock(int row, int column, Block block)
         {
             _blockCellsGrid[row, column].SetBlock(block);
-            block.transform.position = _blockCellsGrid[row, column].transform.position;
+            Vector3 cellOffset = GetCellOffset(block);
+            block.transform.position = _blockCellsGrid[row, column].transform.position + cellOffset;
             block.gameObject.SetActive(true);
-        }
-
-        public Block ReplaceBlock(int row, int column, Block newBlock)
-        {
-            Block replacedBlock = GetBlock(row, column);
-            SetBlock(row, column, newBlock);
-
-            return replacedBlock;
         }
 
         private void SpawnCells(int rows, int columns)
@@ -71,27 +65,14 @@ namespace App.Scripts.Scenes.Level
 
         public void AddBlockToNearestCell(Block block)
         {
-            BlockGridCell resultCell = null;
-            Vector3 blockPosition = block.transform.position;
-            float minDistance = float.MaxValue;
+            Vector3 cellOffset = GetCellOffset(block);
+            Vector3 newCellPoint = block.transform.position - cellOffset;
 
-            foreach (var blockGridCell in _blockCellsGrid)
-            {
-                if(blockGridCell.IsEmpty == false) continue;
+            BlockGridCell nearestSell = GetNearestBlockGridCell(newCellPoint);
+            Vector3 cellPosition = nearestSell.transform.position + cellOffset;
 
-                float distance = Vector3.Distance(blockGridCell.transform.position, blockPosition);
-                if (distance < minDistance)
-                {
-                    minDistance = distance;
-                    resultCell = blockGridCell;
-                }
-            }
-
-            if (resultCell != null)
-            {
-                resultCell.SetBlock(block);
-                block.BlockMovement.MoveToPosition(resultCell.transform.position);
-            }
+            nearestSell.SetBlock(block);
+            block.BlockMovement.MoveToPosition(cellPosition);
         }
 
         public void ClearCellByBlock(Block selectedBlock)
@@ -104,6 +85,33 @@ namespace App.Scripts.Scenes.Level
                     return;
                 }
             }
+        }
+
+        private Vector3 GetCellOffset(Block block)
+        {
+            float halfCellOffset = block.transform.localScale.x % 2 == 0 ?
+                _config.CellSize / 2 : 0;
+            return block.transform.right.normalized * halfCellOffset;
+        }
+        
+        private BlockGridCell GetNearestBlockGridCell(Vector3 position)
+        {
+            BlockGridCell resultCell = null;
+            
+            float minDistance = float.MaxValue;
+            foreach (var blockGridCell in _blockCellsGrid)
+            {
+                if(blockGridCell.IsEmpty == false) continue;
+
+                float distance = Vector3.Distance(blockGridCell.transform.position, position);
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                    resultCell = blockGridCell;
+                }
+            }
+
+            return resultCell;
         }
     }
 }

@@ -50,7 +50,7 @@ namespace App.Scripts.Scenes.Level
                     if(blockIds[i,k] == null) continue;
                     
                     Block block = blocksPoolContainer.GetBlockById(blockIds[i, k]);
-                    block.Initialize(inputSystem, mainCamera);
+                    block.Initialize();
                     blockGrid.SetBlock(i,k, block);
                 }
             }

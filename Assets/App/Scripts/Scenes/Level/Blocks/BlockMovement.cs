@@ -1,4 +1,5 @@
 ﻿using System;
+using App.Scripts.General.Utils;
 using App.Scripts.Scenes.Configs;
 using DG.Tweening;
 using UnityEngine;
@@ -12,27 +13,17 @@ namespace App.Scripts.Scenes.Level
         [SerializeField] private BlockMovementTypes _blockMovementType;
         
         private BlockMovementConfig _config => _levelSceneConfig.BlockMovementConfig;
-        private InputSystem _inputSystem;
         private bool _canMove = false;
-        private Camera _mainCamera;
         private Tween _moveToPositionTween;
         
-        public void Initialize(InputSystem inputSystem, Camera mainCamera)
+        public void Initialize()
         {
-            _inputSystem = inputSystem;
-            _mainCamera = mainCamera;
             SetCanMove(false);
         }
 
-        public void Move()
+        public void Move(Vector3 targetPosition)
         {
-            Vector2 mousePosition = _inputSystem.MousePosition;
-            Vector3 vector3MousePosition = new Vector3(mousePosition.x, mousePosition.y, _mainCamera.transform.position.y);
-            
-            Vector3 worldMousePosition = _mainCamera.ScreenToWorldPoint(vector3MousePosition);
-            worldMousePosition.y = transform.position.y;
-
-            Vector3 velocity = GetVelocityToPosition(worldMousePosition);
+            Vector3 velocity = GetVelocityToPosition(targetPosition);
 
             velocity.x = _blockMovementType == BlockMovementTypes.Horizontal ? velocity.x : 0;
             velocity.z = _blockMovementType == BlockMovementTypes.Vertical ? velocity.z : 0;
@@ -42,7 +33,8 @@ namespace App.Scripts.Scenes.Level
             {
                 velocity = Vector3.zero;
             }
-            
+
+            velocity = MathUtils.ClampVector3(velocity, _config.MaxVelocity * -1, _config.MaxVelocity);
             _rigidbody.velocity = velocity;
         }
 

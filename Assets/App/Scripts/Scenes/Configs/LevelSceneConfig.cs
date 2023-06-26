@@ -8,5 +8,6 @@ namespace App.Scripts.Scenes.Configs
     {
         public BlockGridConfig BlockGridConfig;
         public BlockMovementConfig BlockMovementConfig;
+        public CameraContainerConfig CameraContainerConfig;
     }
 }

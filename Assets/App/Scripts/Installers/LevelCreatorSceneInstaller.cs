@@ -33,7 +33,7 @@ namespace App.Scripts.Installers
             Vector3 lastCellPosition = rightBottomCell.transform.position;
             Vector3 centerMapPosition = (lastCellPosition + firstCellPosition) / 2;
             
-            _cameraContainer.SetCameraPosition(centerMapPosition);
+            _cameraContainer.Initialize(centerMapPosition, _blockGrid);
             _mapColliders.Initialize(_blockGrid, centerMapPosition);
             _createLevelMoveBlockInput.Initialize(_cameraContainer.MainCamera, _inputSystem, _blockGrid);
         }

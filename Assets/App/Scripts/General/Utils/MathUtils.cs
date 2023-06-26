@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace App.Scripts.General.Utils
 {
@@ -39,6 +41,26 @@ namespace App.Scripts.General.Utils
         public static float RandomVector2MinMax(Vector2 vector2)
         {
             return Random.Range(vector2.x, vector2.y);
+        }
+
+        public static Vector3 GetMouseWorldPosition(Camera mainCamera, float targetY)
+        {
+            Vector2 mousePosition = Input.mousePosition;
+            Vector3 vector3MousePosition = new Vector3(mousePosition.x, mousePosition.y, mainCamera.transform.position.y);
+            
+            Vector3 worldMousePosition = mainCamera.ScreenToWorldPoint(vector3MousePosition);
+            worldMousePosition.y = targetY;
+
+            return worldMousePosition;
+        }
+
+        public static Vector3 ClampVector3(Vector3 vector, Vector3 min, Vector3 max)
+        {
+            vector.x = Math.Clamp(vector.x, min.x, max.x);
+            vector.y = Math.Clamp(vector.y, min.y, max.y);
+            vector.z = Math.Clamp(vector.z, min.z, max.z);
+
+            return vector;
         }
     }
 }

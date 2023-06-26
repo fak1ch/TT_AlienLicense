@@ -30,7 +30,6 @@ namespace App.Scripts.Scenes.Level
 
         public Block GetBlockById(string id)
         {
-            Debug.Log(id);
             return _blockPoolByIdMap[id].GetElement();
         }
 

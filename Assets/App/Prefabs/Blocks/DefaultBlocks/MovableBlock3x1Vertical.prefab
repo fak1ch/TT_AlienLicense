@@ -115,7 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelSceneConfig: {fileID: 11400000, guid: 8b303a5dc6a4886498a9cf07e37fe9c9, type: 2}
   _rigidbody: {fileID: 7772419629673483570}
-  _blockMovementType: 0
+  _blockMovementType: 1
 --- !u!54 &7772419629673483570
 Rigidbody:
   m_ObjectHideFlags: 0

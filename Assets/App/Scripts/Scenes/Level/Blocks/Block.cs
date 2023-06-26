@@ -1,5 +1,4 @@
 ﻿using System;
-using App.Scripts.Scenes.Level.Config;
 using UnityEngine;
 
 namespace App.Scripts.Scenes.Level
@@ -15,9 +14,8 @@ namespace App.Scripts.Scenes.Level
         [SerializeField] private BlockMovement _blockMovement;
         [SerializeField] private string _id;
 
-        public void Initialize(InputSystem inputSystem, Camera mainCamera)
+        public void Initialize()
         {
-            _blockMovement.Initialize(inputSystem, mainCamera);
             IsInitialized = true;
         }
 

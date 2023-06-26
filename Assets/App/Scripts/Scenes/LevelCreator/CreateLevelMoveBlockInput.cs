@@ -1,4 +1,5 @@
 ﻿using System;
+using App.Scripts.General.Utils;
 using UnityEngine;
 
 namespace App.Scripts.Scenes.Level
@@ -28,7 +29,7 @@ namespace App.Scripts.Scenes.Level
         {
             if (_selectedBlock != null)
             {
-                Vector3 worldMousePosition = GetMouseWorldPosition();
+                Vector3 worldMousePosition = MathUtils.GetMouseWorldPosition(_camera, _blockY);
 
                 _selectedBlock.transform.position = worldMousePosition + _offset;
             }
@@ -64,7 +65,7 @@ namespace App.Scripts.Scenes.Level
                 if (hitInfo.rigidbody.TryGetComponent(out t))
                 {
                     Vector3 position = t.transform.position;
-                    Vector3 mouseWorldPosition = GetMouseWorldPosition();
+                    Vector3 mouseWorldPosition = MathUtils.GetMouseWorldPosition(_camera, _blockY);
 
                     _offset = position - mouseWorldPosition;
                     _offset.y = 0;
@@ -74,17 +75,6 @@ namespace App.Scripts.Scenes.Level
             }
 
             return false;
-        }
-
-        private Vector3 GetMouseWorldPosition()
-        {
-            Vector2 mousePosition = _inputSystem.MousePosition;
-            Vector3 vector3MousePosition = new Vector3(mousePosition.x, mousePosition.y, _camera.transform.position.y);
-            
-            Vector3 worldMousePosition = _camera.ScreenToWorldPoint(vector3MousePosition);
-            worldMousePosition.y = _blockY;
-
-            return worldMousePosition;
         }
     }
 }

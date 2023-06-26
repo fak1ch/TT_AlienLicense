@@ -22,4 +22,5 @@ MonoBehaviour:
     MirrorZ: 1
   BlockMovementConfig:
     MoveSpeed: 1000
+    MaxVelocity: {x: 5, y: 0, z: 5}
     MoveToPositionDuration: 0.5
