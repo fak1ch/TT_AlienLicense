@@ -4,6 +4,5 @@
     {
         Level,
         MainMenu,
-        LevelCreator,
     }
 }

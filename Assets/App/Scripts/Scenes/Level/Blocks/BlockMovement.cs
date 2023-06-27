@@ -69,7 +69,7 @@ namespace App.Scripts.Scenes.Level
         private void DrawDebugRay(Vector3 direction)
         {
             #if UNITY_EDITOR == false
-                return
+                return;
             #endif
             
             float rayDistance = transform.lossyScale.x/2;

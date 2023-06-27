@@ -1,33 +1,34 @@
 {
   "BlockIds": [
     [
+      "2x1Horizontal",
+      null,
       "2x1Vertical",
-      null,
-      "3x1Horizontal",
       null
-    ],
-    [
-      null,
-      null,
-      null,
-      "2x1Vertical"
     ],
     [
       "PlayerBlock",
       null,
       null,
+      "3x1Vertical"
+    ],
+    [
+      null,
+      "2x1Horizontal",
+      null,
       null
     ],
     [
       null,
       null,
       null,
-      null
+      "DissapearBlock"
     ]
   ],
   "LevelEndTriggerPosition": {
-    "X": 3.84,
-    "Y": 0.03,
-    "Z": -2.03
-  }
+    "X": 3.86,
+    "Y": 0.499999523,
+    "Z": -1.05490136
+  },
+  "MoveCount": 5
 }

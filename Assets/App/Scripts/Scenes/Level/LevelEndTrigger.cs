@@ -9,7 +9,7 @@ namespace App.Scripts.Scenes.Level
         {
             if (other.TryGetComponent(out PlayerBlock playerBlock))
             {
-                Debug.Log("game win");
+                LevelEvents.LevelPassed();
             }
         }
     }

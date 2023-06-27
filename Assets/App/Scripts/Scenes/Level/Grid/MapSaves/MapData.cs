@@ -8,6 +8,7 @@ namespace App.Scripts.Scenes.Level
     {
         public string[,] BlockIds;
         public CustomVector3 LevelEndTriggerPosition;
+        public int MoveCount;
     }
 
     [Serializable]

@@ -1,5 +1,7 @@
 ﻿using System;
+using App.Scripts.General.PopUpSystemSpace;
 using App.Scripts.General.Utils;
+using App.Scripts.Scenes.Level.UI;
 using UnityEngine;
 
 namespace App.Scripts.Scenes.Level
@@ -9,6 +11,7 @@ namespace App.Scripts.Scenes.Level
         [SerializeField] private Camera _camera;
         [SerializeField] private InputSystem _inputSystem;
         [SerializeField] private BlockGrid _blockGrid;
+        [SerializeField] private MoveCounter _moveCounter;
 
         private Block _selectedBlock;
         private BlockMovement _selectedBlockMovement;
@@ -47,6 +50,8 @@ namespace App.Scripts.Scenes.Level
         
         private void MouseDownCallback()
         {
+            if(PopUpSystem.Instance.ActivePopUpsCount > 0) return;
+            
             if (TryGetComponentByRay(out _selectedBlock))
             {
                 _selectedBlockMovement = _selectedBlock.BlockMovement;
@@ -68,6 +73,7 @@ namespace App.Scripts.Scenes.Level
             
             _selectedBlockMovement.SetCanMove(false);
             _blockGrid.AddBlockToNearestCell(_selectedBlock);
+            _moveCounter.MakeMove();
             _selectedBlockMovement = null;
             _selectedBlock = null;
         }

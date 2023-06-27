@@ -5,6 +5,7 @@ using App.Scripts.General.UI.ButtonSpace;
 using App.Scripts.Scenes.Configs;
 using App.Scripts.Scenes.Level;
 using Newtonsoft.Json;
+using TMPro;
 using UnityEngine;
 
 namespace App.Scripts.Scenes.LevelCreator
@@ -14,6 +15,7 @@ namespace App.Scripts.Scenes.LevelCreator
         [SerializeField] private CustomButton _saveButton;
         [SerializeField] private BlockGrid _blockGrid;
         [SerializeField] private LevelsConfig _levelsConfig;
+        [SerializeField] private TMP_InputField _movesCountField;
 
         #region Events
 
@@ -32,7 +34,7 @@ namespace App.Scripts.Scenes.LevelCreator
         private void SaveButtonClickedCallback()
         {
             MapConverter mapConverter = new MapConverter();
-            if (mapConverter.TryConvertBlocksGridToMapData(_blockGrid, out MapData mapData))
+            if (mapConverter.TryConvertBlocksGridToMapData(_blockGrid, int.Parse(_movesCountField.text), out MapData mapData))
             {
                 _levelsConfig.SaveLevelByIndex(_levelsConfig.LevelsCount, mapData);
                 HidePopUp();

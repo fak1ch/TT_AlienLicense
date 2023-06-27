@@ -146,7 +146,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fa974daa6214f348249f59f7b629f15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _popUpList: []
+  _popUpList:
+  - Prefab: {fileID: 8163431640853011925, guid: f257ca801c97082478bddf49045b7f6c, type: 3}
+    PoolSize: 1
+  - Prefab: {fileID: 6833899762389997209, guid: ae8e26b3291a86c49ae109c15afeae2c, type: 3}
+    PoolSize: 1
   _canvasParent: {fileID: 4875852070084274681}
 --- !u!1 &8181663602631953956
 GameObject:

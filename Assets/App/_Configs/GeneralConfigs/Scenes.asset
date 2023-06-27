@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Scenes
   m_EditorClassIdentifier: 
   scenes:
+  - scene: {fileID: 102900000, guid: 918c48977bb676643b10fe58371227da, type: 3}
+    sceneEnumEnum: 1
+    sceneName: MainMenu
   - scene: {fileID: 102900000, guid: 6a7a2cf9cf7266c47ad90cb87cfae5cb, type: 3}
     sceneEnumEnum: 0
     sceneName: Level

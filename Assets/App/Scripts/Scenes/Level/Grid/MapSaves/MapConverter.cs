@@ -8,7 +8,7 @@ namespace App.Scripts.Scenes.Level
 {
     public class MapConverter
     {
-        public bool TryConvertBlocksGridToMapData(BlockGrid blockGrid, out MapData mapData)
+        public bool TryConvertBlocksGridToMapData(BlockGrid blockGrid, int moveCount,  out MapData mapData)
         {
             mapData = new MapData();
             LevelEndTrigger levelEndTrigger = Object.FindObjectOfType<LevelEndTrigger>();
@@ -33,13 +33,14 @@ namespace App.Scripts.Scenes.Level
             {
                 BlockIds = blockIds,
                 LevelEndTriggerPosition = levelEndTrigger.transform.position.ToCustomVector3(),
+                MoveCount = moveCount,
             };
 
             return true;
         }
 
         public void ConvertMapDataToBlocksGrid(MapData mapData, BlockGrid blockGrid, BlocksPoolContainer blocksPoolContainer,
-            LevelEndTrigger levelEndTrigger, InputSystem inputSystem, Camera mainCamera)
+            LevelEndTrigger levelEndTrigger)
         {
             string[,] blockIds = mapData.BlockIds;
             

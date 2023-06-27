@@ -1,0 +1,73 @@
+{
+  "BlockIds": [
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      "3x1Vertical",
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "PlayerBlock",
+      null,
+      null,
+      "WakeUpBlock",
+      null,
+      "DissapearBlock",
+      null
+    ],
+    [
+      "2x1Vertical",
+      "2x1Vertical",
+      "3x1Vertical",
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      "3x1Horizontal",
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  ],
+  "LevelEndTriggerPosition": {
+    "X": 6.93,
+    "Y": 0.0,
+    "Z": -3.0
+  },
+  "MoveCount": 10
+}

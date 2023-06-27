@@ -2,6 +2,7 @@
 using App.Scripts.Scenes.Configs;
 using App.Scripts.Scenes.Level;
 using App.Scripts.Scenes.Level.Config;
+using App.Scripts.Scenes.Level.UI;
 using UnityEngine;
 
 namespace App.Scripts.Installers
@@ -16,6 +17,7 @@ namespace App.Scripts.Installers
         [SerializeField] private LevelEndTrigger _levelEndTriggerPrefab;
         [SerializeField] private BlocksConfig _blocksConfig;
         [SerializeField] private InputSystem _inputSystem;
+        [SerializeField] private MoveCounter _moveCounter;
         
         private void Awake()
         {
@@ -26,10 +28,10 @@ namespace App.Scripts.Installers
             
             MapData mapData = _levelsConfig.LoadLevelByIndex(_levelsConfig.SelectedLevelIndex);
             _blockGrid.Initialize(mapData.BlockIds.GetLength(0), mapData.BlockIds.GetLength(1));
+            _moveCounter.Initialize(mapData.MoveCount);
             
             MapConverter mapConverter = new MapConverter();
-            mapConverter.ConvertMapDataToBlocksGrid(mapData, _blockGrid, _blocksPoolContainer, levelEndTrigger,
-                _inputSystem, _cameraContainer.MainCamera);
+            mapConverter.ConvertMapDataToBlocksGrid(mapData, _blockGrid, _blocksPoolContainer, levelEndTrigger);
             
             BlockGridCell leftTopCell = _blockGrid.GetCell(0, 0);
             BlockGridCell rightBottomCell = _blockGrid.GetCell(_blockGrid.Rows - 1, _blockGrid.Columns - 1);

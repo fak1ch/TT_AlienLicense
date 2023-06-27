@@ -12,7 +12,7 @@ namespace App.Scripts.Scenes.Level.Blocks
             
             if (collision.gameObject.TryGetComponent(out PlayerBlock playerBlock))
             {
-                Debug.Log("game over");
+                LevelEvents.GameOver();
             }
         }
     }

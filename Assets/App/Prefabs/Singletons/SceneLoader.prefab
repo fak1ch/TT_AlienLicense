@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f2e7ac64e254edfbacdf9fa1e8f4c04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeUntilLoadScene: 3
+  _timeUntilLoadScene: 1
   _sceneSO: {fileID: 11400000, guid: 46fd63b0de614569a190a87fd2eaad0b, type: 2}
   _loadingPanel: {fileID: 1775925059450192727}
 --- !u!1 &1577060185971771097
